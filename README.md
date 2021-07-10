@@ -1,3 +1,7 @@
+# Bootcamp React Developer - Digital Innovation One
+
+## Webinar Como gerenciar o estado das aplicações com Redux
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,5 +1,14 @@
 const initialState = {
-  list: []
+  list: [
+      {
+      id: 1,
+      name: 'Primeiro Item'
+    },
+    {
+      id: 2,
+      name: 'Segundo Item'
+    }
+  ]
 };
 
 export default function reducer(state = initialState, action) {

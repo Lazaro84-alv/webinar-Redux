@@ -1,8 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Button from '../../components/button';
 import Input from '../../components/input';
 import List from '../../components/list';
+
+import { addTodo } from '../../store/actions/todo';
 
 class App extends Component {
   state  = {
@@ -11,21 +14,23 @@ class App extends Component {
 
   handleOnClick = () => {
     console.log('Button was clicked');
-  }
+    const { addTodo } = this.props;
+    const { input } = this.state;
 
-  handleOnChange = event => {
-    // console.log('Input was changed', event.target.value);
+    addTodo(input);
+  };
 
+  handleOnChange = event => {  
     this.setState({ input: event.target.value });
-
-    console.log(this.state);
-  }
+  };
 
   render() { 
     const { input } = this.state;
+    const { listTodo } = this.props;
+    console.log(listTodo);
     return (
       <div>
-        <List todoList={[]} />
+        <List />
         <Input onChange={() => this.handleOnChange()} value={input} />
         <Button onClick={() => this.handleOnClick()}>Adicionar</Button>
       </div>
@@ -33,4 +38,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  listTodo: state.todo
+});
+
+export default connect(
+  mapStateToProps, 
+  { addTodo }
+)(App);
